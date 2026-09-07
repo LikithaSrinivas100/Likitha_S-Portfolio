@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Likitha S | Portfolio</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+            :root {
+                --bg-1: #f6f3ee;
+                --bg-2: #e9f3f0;
+                --ink: #1d1f1e;
+                --muted: #5a5f5b;
+                --accent: #0f7f6d;
+                --accent-2: #f28c68;
+                --card: #ffffff;
+                --border: rgba(29, 31, 30, 0.12);
+                --shadow: 0 20px 45px rgba(15, 21, 18, 0.12);
+                --radius-lg: 28px;
+                --radius-md: 18px;
+                --radius-sm: 12px;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Space Grotesk", sans-serif;
+                color: var(--ink);
+                background: radial-gradient(circle at 10% 10%, #ffffff 0%, transparent 55%),
+                    radial-gradient(circle at 85% 20%, #f2f9f7 0%, transparent 60%),
+                    linear-gradient(120deg, var(--bg-1), var(--bg-2));
+                min-height: 100vh;
+                line-height: 1.6;
+            }
+
+            .page {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .float-shape {
+                position: absolute;
+                width: 380px;
+                height: 380px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(15, 127, 109, 0.18), transparent 65%);
+                filter: blur(6px);
+                animation: float 18s ease-in-out infinite;
+                z-index: 0;
+            }
+
+            .float-shape.shape-1 {
+                top: -120px;
+                left: -80px;
+            }
+
+            .float-shape.shape-2 {
+                bottom: -140px;
+                right: -60px;
+                animation-delay: -6s;
+                background: radial-gradient(circle, rgba(242, 140, 104, 0.2), transparent 65%);
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(24px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+
+            .container {
+                width: min(1140px, 92vw);
+                margin: 0 auto;
+                padding: 36px 0 96px;
+                position: relative;
+                z-index: 1;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 0 40px;
+            }
+
+            .logo {
+                font-family: "Playfair Display", serif;
+                font-size: 26px;
+                letter-spacing: 0.5px;
+            }
+
+            nav {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: var(--muted);
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            nav a:hover {
+                color: var(--accent);
+            }
+
+            .hero {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 40px;
+                align-items: center;
+                padding: 18px 0 40px;
+            }
+
+            .hero h1 {
+                font-family: "Playfair Display", serif;
+                font-size: clamp(2.4rem, 3.6vw, 3.8rem);
+                line-height: 1.1;
+                margin-bottom: 16px;
+            }
+
+            .hero p {
+                color: var(--muted);
+                font-size: 1.08rem;
+                margin-bottom: 22px;
+            }
+
+            .hero .typing {
+                display: inline-block;
+                font-weight: 600;
+                color: var(--accent);
+                border-right: 2px solid var(--accent);
+                padding-right: 6px;
+                animation: blink 0.8s step-end infinite;
+            }
+
+            @keyframes blink {
+                50% {
+                    border-color: transparent;
+                }
+            }
+
+            .cta {
+                display: flex;
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 20px;
+                border-radius: 999px;
+                border: 1px solid transparent;
+                font-weight: 600;
+                text-decoration: none;
+                transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            }
+
+            .btn.primary {
+                background: var(--accent);
+                color: #ffffff;
+                box-shadow: 0 10px 20px rgba(15, 127, 109, 0.25);
+            }
+
+            .btn.primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 24px rgba(15, 127, 109, 0.3);
+            }
+
+            .btn.ghost {
+                border-color: var(--border);
+                color: var(--ink);
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+            .btn.ghost:hover {
+                transform: translateY(-2px);
+                border-color: var(--accent);
+            }
+
+            .profile-card {
+                background: var(--card);
+                border-radius: var(--radius-lg);
+                padding: 30px;
+                box-shadow: var(--shadow);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .profile-card::after {
+                content: "";
+                position: absolute;
+                inset: 12px;
+                border-radius: var(--radius-lg);
+                border: 1px dashed rgba(15, 127, 109, 0.2);
+                pointer-events: none;
+            }
+
+            .profile-avatar {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--accent), var(--accent-2));
+                display: grid;
+                place-items: center;
+                color: #fff;
+                font-size: 30px;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            .profile-meta {
+                display: grid;
+                gap: 8px;
+                color: var(--muted);
+                font-size: 0.98rem;
+            }
+
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 12px;
+                border-radius: 999px;
+                background: rgba(15, 127, 109, 0.08);
+                color: var(--accent);
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            section {
+                margin-top: 64px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 18px;
+                font-weight: 700;
+            }
+
+            .grid {
+                display: grid;
+                gap: 22px;
+            }
+
+            .grid.two {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .card {
+                background: var(--card);
+                border-radius: var(--radius-md);
+                padding: 22px;
+                border: 1px solid var(--border);
+                box-shadow: 0 15px 40px rgba(15, 21, 18, 0.08);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 44px rgba(15, 21, 18, 0.12);
+            }
+
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 18px;
+            }
+
+            .stat {
+                padding: 18px;
+                border-radius: var(--radius-sm);
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(15, 127, 109, 0.12);
+                text-align: center;
+            }
+
+            .stat span {
+                display: block;
+                font-size: 1.7rem;
+                font-weight: 700;
+                color: var(--accent);
+            }
+
+            .skills {
+                display: grid;
+                gap: 16px;
+            }
+
+            .skill {
+                display: grid;
+                gap: 8px;
+            }
+
+            .skill-bar {
+                height: 10px;
+                border-radius: 999px;
+                background: rgba(15, 127, 109, 0.1);
+                overflow: hidden;
+            }
+
+            .skill-bar span {
+                display: block;
+                height: 100%;
+                background: linear-gradient(120deg, var(--accent), var(--accent-2));
+                border-radius: inherit;
+                width: 0%;
+                transition: width 1.4s ease;
+            }
+
+            .filters {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-bottom: 18px;
+            }
+
+            .filter-btn {
+                padding: 8px 14px;
+                border-radius: 999px;
+                border: 1px solid var(--border);
+                background: #fff;
+                cursor: pointer;
+                font-weight: 600;
+                color: var(--muted);
+            }
+
+            .filter-btn.active {
+                background: var(--accent);
+                color: #fff;
+                border-color: transparent;
+            }
+
+            .project-tags {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-top: 12px;
+            }
+
+            .tag {
+                font-size: 0.82rem;
+                padding: 4px 10px;
+                background: rgba(242, 140, 104, 0.15);
+                border-radius: 999px;
+                color: #a15034;
+            }
+
+            .timeline {
+                display: grid;
+                gap: 16px;
+            }
+
+            .timeline-item {
+                border-left: 3px solid rgba(15, 127, 109, 0.3);
+                padding-left: 16px;
+            }
+
+            .contact {
+                display: grid;
+                gap: 18px;
+            }
+
+            .contact a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            footer {
+                margin-top: 70px;
+                text-align: center;
+                color: var(--muted);
+                font-size: 0.95rem;
+            }
+
+            .reveal {
+                opacity: 0;
+                transform: translateY(16px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            @media (max-width: 720px) {
+                header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 16px;
+                }
+
+                nav {
+                    gap: 12px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="float-shape shape-1"></div>
+            <div class="float-shape shape-2"></div>
+
+            <div class="container">
+                <header>
+                    <div class="logo">Likitha S</div>
+                    <nav>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#education">Education</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </header>
+
+                <section class="hero reveal">
+                    <div>
+                        <span class="badge">BCA Data Science Student</span>
+                        <h1>
+                        Turning data into insights and intelligent systems.
+                        </h1>
+                        <p>
+                        I am Likitha S, a 2nd year BCA Data Science student at Alliance
+                        University, Bangalore. I focus on data analysis, machine learning,
+                        and building real-world data-driven systems through projects and
+                        hackathons.
+                        </p>
+                        <p>
+                        <span class="typing" id="typing">Data Science Student</span>
+                        </p>
+
+                        <div class="cta">
+                            <a class="btn primary" href="#projects">View Projects</a>
+                            <a class="btn ghost" href="RESUME.HTML">Download Resume</a>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">LS</div>
+                        <h3>Quick Details</h3>
+                        <div class="profile-meta">
+                            <span>Location: Bangalore, India</span>
+                            <span>Degree: BCA – Data Science</span>
+                            <span>Focus: Data Analysis & Machine Learning</span>
+                            <span>Availability: Open to internships</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about" class="reveal">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="grid two">
+                        <div class="card">
+                            <h3>Profile</h3>
+                            <p>
+                            I am a data science student focused on solving real-world problems
+                            using data analysis, machine learning, and intelligent systems.
+                            My work includes predictive models, anomaly detection, and
+                            AI-assisted analytics tools designed to support decision-making.
+                            </p>
+
+                        </div>
+                        <div class="card">
+                            <h3>Highlights</h3>
+                            <div class="stats">
+                                <div class="stat">
+                                <span data-count="2">0</span>
+                                Major Projects
+                                </div>
+                                <div class="stat">
+                                <span data-count="5">0</span>
+                                Data Certifications
+                                </div>
+                                <div class="stat">
+                                <span data-count="1">0</span>
+                                National Hackathon
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" class="reveal">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="grid two">
+                        <div class="card">
+                            <h3>Technical</h3>
+                            <div class="skills">
+                                <div class="skill">
+                                <strong>Python</strong>
+                                <div class="skill-bar"><span data-skill="85"></span></div>
+                                </div>
+                                <div class="skill">
+                                <strong>SQL</strong>
+                                <div class="skill-bar"><span data-skill="75"></span></div>
+                                </div>
+                                <div class="skill">
+                                <strong>Data Analysis & EDA</strong>
+                                <div class="skill-bar"><span data-skill="80"></span></div>
+                                </div>
+                                <div class="skill">
+                                <strong>Machine Learning</strong>
+                                <div class="skill-bar"><span data-skill="80"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>Strengths</h3>
+                            <p>
+                            Strong analytical thinking, problem solving, and data storytelling.
+                            I enjoy turning raw data into insights that support product and
+                            business decisions.
+                            </p>
+
+                            <div class="project-tags">
+                                <span class="tag">UI Design</span>
+                                <span class="tag">DOM Manipulation</span>
+                                <span class="tag">Accessibility Basics</span>
+                                <span class="tag">Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="reveal">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="js">JavaScript</button>
+                        <button class="filter-btn" data-filter="ui">UI Clone</button>
+                        <button class="filter-btn" data-filter="data">Data</button>
+                    </div>
+                    <div class="grid two" id="projectGrid">
+                        <div class="card project" data-category="data">
+                        <h3>ISEWS – Identity Stress Early-Warning System</h3>
+                        <p>
+                        Predictive monitoring system built for the UIDAI Data Hackathon
+                        2026 to detect early identity stress signals across regions
+                        using anonymized Aadhaar datasets.
+                        </p>
+                        <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Isolation Forest</span>
+                        <span class="tag">Streamlit</span>
+                        </div>
+                        <div class="cta">
+                        <a class="btn ghost" href="https://uidai-dashboard.streamlit.app/">
+                        View Dashboard
+                        </a>
+                        </div>
+                        </div>
+
+                        <div class="card project" data-category="data">
+                        <h3>InSighto – Data Analyst Assistant</h3>
+                        <p>
+                        AI-assisted analytics system that automates data validation,
+                        analysis, visualization, and reporting workflows for
+                        non-technical users.
+                        </p>
+                        <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">AI</span>
+                        </div>
+                        </div>
+
+
+                        <div class="card project" data-category="ui">
+                            <h3>Netflix Login UI</h3>
+                            <p>
+                                Pixel-precise recreation of a well-known login flow with focus on
+                                spacing and typography.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">UI Clone</span>
+                                <span class="tag">HTML</span>
+                            </div>
+                            <div class="cta">
+                                <a class="btn ghost" href="Netflix login page/Netflix_page.html">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education" class="reveal">
+                    <h2 class="section-title">Education</h2>
+                    <div class="timeline">
+                        <div class="card timeline-item">
+                            <h3>Alliance University, Bangalore</h3>
+                            <p>BCA in Data Science (2024 – 2027)</p>
+                            <p>
+                            CGPA: 8.7 (Sem 1), 8.8 (Sem 2). <br>
+                            Coursework includes
+                            programming, data structures, databases, statistics,
+                            and machine learning fundamentals.
+                            </p>
+
+                        </div>
+                        <div class="card timeline-item">
+                            <h3>Additional Learning</h3>
+                            <p>
+                                Building mini projects in JavaScript, exploring UI design systems,
+                                and practicing problem solving on small datasets.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="reveal">
+                    <h2 class="section-title">Contact</h2>
+                    <div class="card contact">
+                        <p>
+                            Let’s collaborate on projects or internships. Reach me at:
+                        </p>
+                        <p>
+                            Email:
+                            <a href="mailto:likithasrinivas2006@gmail.com">likithasrinivas2006@gmail.com</a>
+                        </p>
+                        <p>
+                            Phone no.: 
+                            <a href="+91 8123005759">+91 8123005759</a>
+                        </p>
+                        <p>
+                            LinkedIn:
+                            <a href="https://www.linkedin.com/in/likitha-s100/">LinkedIn Profile URL</a>
+                        </p>
+                        <p>
+                            LinkedIn:
+                            <a href="https://github.com/LikithaSrinivas100">Github Profile URL</a>
+                        </p>
+                    </div>
+                </section>
+
+                <footer>
+                    <span id="year"></span> © Likitha S. Crafted with care.
+                </footer>
+            </div>
+        </div>
+
+        <script>
+            const words = [
+
+                "Data Science Student",
+                "Machine Learning Enthusiast",
+                "Data Analyst in Training",
+                "AI & Analytics Builder",
+            ];
+
+            const typingElement = document.getElementById("typing");
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typeEffect() {
+                const currentWord = words[wordIndex];
+                const currentText = currentWord.substring(0, charIndex);
+                typingElement.textContent = currentText;
+
+                if (!isDeleting && charIndex < currentWord.length) {
+                    charIndex += 1;
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex -= 1;
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        wordIndex = (wordIndex + 1) % words.length;
+                    }
+                }
+
+                const speed = isDeleting ? 55 : 95;
+                setTimeout(typeEffect, charIndex === currentWord.length ? 900 : speed);
+            }
+
+            typeEffect();
+
+            const reveals = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                },
+                { threshold: 0.2 }
+            );
+            reveals.forEach((el) => observer.observe(el));
+
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            document.querySelectorAll(".skill-bar span").forEach((bar) => {
+                const value = bar.dataset.skill;
+                setTimeout(() => {
+                    bar.style.width = value + "%";
+                }, 300);
+            });
+
+            document.querySelectorAll(".filter-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    document.querySelector(".filter-btn.active").classList.remove("active");
+                    btn.classList.add("active");
+                    const filter = btn.dataset.filter;
+                    document.querySelectorAll(".project").forEach((card) => {
+                        const match = filter === "all" || card.dataset.category === filter;
+                        card.style.display = match ? "block" : "none";
+                    });
+                });
+            });
+
+            const counters = document.querySelectorAll("[data-count]");
+            counters.forEach((counter) => {
+                const target = Number(counter.dataset.count);
+                let current = 0;
+                const increment = Math.ceil(target / 40);
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = current;
+                    }
+                }, 30);
+            });
+        </script>
+    </body>
+</html>
